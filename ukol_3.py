@@ -14,31 +14,31 @@ from math import ceil
 # functions
   # Fce calculates lenght of the phone number
 def number_lenght_fce(x): 
-  return len(x)
+  number_len = len(x)
+  if number_len ==13:
+    print(f"{number_len}")
+    if phone_number[0:4] == "+420":                     # if the number lengh is 13, check if the phone number starts with +420
+      phone_check = True
+    else:
+      phone_check = False
+  else:
+    if number_len == 9:                                 #if the number lenght is not 13, check if the number lenght is 9
+      print(f"{number_len}")
+      phone_check = True
+    else:
+      print(f"{number_len}")
+      phone_check = False
+  return phone_check
 
   # Fce calculates message price, when each starte 180 symbols cost 3 Kč
 def message_price_fce(x):
   return ceil(len(x)/180)*3
 
 phone_number = input("Zadej číslo kam chceš poslat SMS: ")
-number_len = number_lenght_fce(phone_number)
-print(f"{number_len}")
+number_check = number_lenght_fce(phone_number)
+print(f"{number_check}")
 
-if number_len == 13:                                  #check if the number lenght is 13
-  print(f"{number_len}")
-  if phone_number[0:4] == "+420":                     # if the number lengh is 13, check if the phone number starts with +420
-    phone_check = True
-  else:
-    phone_check = False
-else:
-  if number_len == 9:                                 #if the number lenght is not 13, check if the number lenght is 9
-    print(f"{number_len}")
-    phone_check = True
-  else:
-    print(f"{number_len}")
-    phone_check = False
-
-if phone_check == True:
+if number_check == True:
   message = input("Napiš zprávu: ")
   message_price = message_price_fce(message)
   print(f"Message price is: {message_price}")
